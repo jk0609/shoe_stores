@@ -1,0 +1,16 @@
+<h1>All Stores</h1>
+<ul>
+<%@stores.each do |store|%>
+  <li><a href="/<%=store.id%>"><%=store.name%></a></li>
+<%end%>
+</ul>
+<br>
+<h3>Add New Store</h3>
+<form action="/" method="post">
+  <div class="form-group">
+    <h5>Your store must have a name.</h5>
+    <label for="s_name">Store Name</label>
+    <input type="text" name="s_name">
+  </div>
+  <button type="submit" name="button">Add Store</button>
+</form>
