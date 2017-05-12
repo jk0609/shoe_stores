@@ -30,7 +30,12 @@ describe(Brand)do
   end
 
   it("converts first letter to uppercase and the rest to lowercase") do
-    brand1 = Brand.create({:name => "tHe bEST BrAnD"})
+    brand1 = Brand.create({:name => "tHe bEST BrAnD", :price=>50})
     expect(brand1.name).to(eq("The Best Brand"))
+  end
+
+  it("converts all price values to dollar format") do
+    brand1 = Brand.create({:name => "tHe bEST BrAnD", :price=>12.2})
+    expect(brand1.price).to(eq(12.20))
   end
 end

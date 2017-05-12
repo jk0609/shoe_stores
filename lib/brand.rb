@@ -18,4 +18,7 @@ private
     self.name = split.join(" ")
   end
 
+  def price_format
+    self.price = ('%.02f' % self.price).to_f
+  end
 end
