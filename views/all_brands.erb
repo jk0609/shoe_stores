@@ -1,7 +1,7 @@
 <h1>All Brands</h1>
 <ul>
 <%@brands.each do |brand|%>
-  <li> <a href="/<%=brand.id%>"><%=brand.name%></a>   Price: $<%=brand.price%></li>
+  <li><%=brand.name%></a> - $<%=brand.price%></li>
 <%end%>
 </ul>
 <br>

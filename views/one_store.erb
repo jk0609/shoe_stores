@@ -15,7 +15,7 @@
 <form class="" action="/stores/<%=@store.id%>" method="post">
 <%@store.unassigned.each do |brand|%>
   <div class="form-group">
-    <input type="checkbox" name="b_ids[]" value="<%=brand.id%>"> <%=brand.name%> - $<%=brand.price%>
+    <input type="checkbox" id='<%=brand.name%>' name="b_ids[]" value="<%=brand.id%>"> <%=brand.name%> - $<%=brand.price%>
   </div>
 <%end%>
 <button type="submit" name="button">Add Brand</button>
@@ -34,10 +34,8 @@
 </form>
 
 <h3>Delete This Store</h3>
-<form action="\" method="post">
+<form action="/" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" name="s_id" value="<%=@store.id%>">
   <button type="submit" name="button">Delete This Store</button>
 </form>
-
-<!-- delete this store -->

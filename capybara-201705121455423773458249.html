@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <title>Shoe Store</title>
+  </head>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">All Stores</a></li>
+        <li><a href="/brands">All Brands</a></li>
+        <li><a href="/kill">Wipe Database</a></li>        
+      </ul>
+    </div>
+  </nav>
+  <body>
+    <div class='container'>
+      <h1>Test Store 2</h1>
+
+<h3>Brands At This Store</h3>
+<form class="" action="/stores/170" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+<button type="submit" name="button">Remove Brand</button>
+</form>
+
+<h3>Available Brands</h3>
+<form class="" action="/stores/170" method="post">
+
+  <div class="form-group">
+    <input type="checkbox" name="b_ids[]" value="177"> Test Brand - $20.00
+  </div>
+
+<button type="submit" name="button">Add Brand</button>
+</form>
+
+<h3>Change Store Name</h3>
+
+<form action="/stores/170" method="post">
+  <div class="form-group">
+    <label for="s_name">Change Name</label>
+    <input type="text" name="s_name" value="Test Store 2">
+  </div>
+  <button type="submit" name="button">Update Name</button>
+</form>
+
+<h3>Delete This Store</h3>
+<form action="/" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="s_id" value="170">
+  <button type="submit" name="button">Delete This Store</button>
+</form>
+
+    </div>
+  </body>
+</html>
