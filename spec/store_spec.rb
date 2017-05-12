@@ -5,8 +5,17 @@ describe(Store)do
     it('returns an array of brands associated with this store object') do
       store1 = Store.create({:name=>'store1'})
       brand1 = store1.brands.create({:name=>'name', :price=>50.00})
-      brand2 = store1.brands.create({:name=>'name', :price=>50.00})
+      brand2 = store1.brands.create({:name=>'name2', :price=>50.00})
       expect(store1.brands).to(eq([brand1, brand2]))
+    end
+  end
+
+  describe('#unassigned') do
+    it('returns an array of brands not associated with this store object') do
+      store1 = Store.create({:name=>'store1'})
+      brand1 = Brand.create({:name=>'name', :price=>50.00})
+      brand2 = Brand.create({:name=>'name2', :price=>50.00})
+      expect(store1.unassigned).to(eq([brand1, brand2]))
     end
   end
 

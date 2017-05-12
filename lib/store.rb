@@ -9,6 +9,16 @@ class Store < ActiveRecord::Base
   }
   before_save(:format_name)
 
+  def unassigned
+    available = []
+    Brand.all.each do |brand|
+      if self.brands.ids.include?(brand.id)==false
+        available.push(brand)
+      end
+    end
+    available
+  end
+
 private
   def format_name
     split = self.name.split(" ")

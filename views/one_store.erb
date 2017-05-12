@@ -1,0 +1,25 @@
+<h1><%=@store.name%></h1>
+
+<h3>Brands At This Store</h3>
+<form class="" action="/stores/<%=@store.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+<%@store.brands.each do |brand|%>
+  <div class="form-group">
+    <input type="checkbox" name="b_ids[]" value="<%=brand.id%>"> <a href="/brands/<%=brand.id%>"><%=brand.name%></a>
+  </div>
+<%end%>
+<button type="submit" name="button">Remove Brand</button>
+</form>
+
+<h3>Available Brands</h3>
+<form class="" action="/stores/<%=@store.id%>" method="post">
+<%@store.unassigned.each do |brand|%>
+  <div class="form-group">
+    <input type="checkbox" name="b_ids[]" value="<%=brand.id%>"> <%=brand.name%>
+  </div>
+<%end%>
+<button type="submit" name="button">Add Brand</button>
+</form>
+
+<!-- edit store -->
+<!-- delete this store -->

@@ -12,6 +12,7 @@ class Brand < ActiveRecord::Base
   }
   before_save(:format_name, :price_format)
 
+
 private
   def format_name
     split = self.name.split(" ")
