@@ -23,4 +23,14 @@ describe(Brand)do
     expect(brand1.save()).to(eq(false))
   end
 
+  it("validates that a brands name is unique") do
+    brand1 = Brand.create({:name => "x"})
+    brand2 = Brand.new({:name => "x"})
+    expect(brand2.save()).to(eq(false))
+  end
+
+  it("converts first letter to uppercase and the rest to lowercase") do
+    brand1 = Brand.create({:name => "tHe bEST BrAnD"})
+    expect(brand1.name).to(eq("The Best Brand"))
+  end
 end
