@@ -5,7 +5,7 @@ class Store < ActiveRecord::Base
   validates :name, {
     presence: { message: "Your store must have a name." },
     length: { maximum: 100, too_long: "Your store name must be under #{count} characters." },
-    uniqueness: {case_sensitive: false}
+    uniqueness: {case_sensitive: false, message: 'That brand already exists.'}
   }
   before_save(:format_name)
 
