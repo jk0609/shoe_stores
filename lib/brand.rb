@@ -4,7 +4,7 @@ class Brand < ActiveRecord::Base
 
   validates :name, {
     presence: { message: "Your brand must have a name." },
-    length: { maximum: 100, too_long: "Your brand name must be under #{count} characters." },
+    length: { maximum: 100, too_long: "Your brand name must be under 100 characters." },
     uniqueness: {case_sensitive: false, message: 'That brand already exists.'}
   }
   validates :price, {

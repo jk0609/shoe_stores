@@ -13,6 +13,11 @@ post('/') do
   @stores = Store.all
   erb(:index)
 end
+delete('/') do
+  Store.find(params[:s_id].to_i).destroy
+  @stores = Store.all
+  erb(:index)
+end
 
 #one store
 get('/stores/:s_id') do
@@ -21,16 +26,19 @@ get('/stores/:s_id') do
 end
 post('/stores/:s_id') do
   @store = Store.find(params[:s_id].to_i)
-  params[:b_ids].each do |id|
-    @store.brands.push(Brand.find(id.to_i))
+  @store.add_many_brands(params[:b_ids])
+  @store.update({:name=>params[:s_name]})
+  if @store.errors.any?
+    @errors = @store.errors
+    @store = Store.find(params[:s_id].to_i)
+    erb(:one_store)
+  else
+    erb(:one_store)
   end
-  erb(:one_store)
 end
 patch('/stores/:s_id') do
   @store = Store.find(params[:s_id].to_i)
-  params[:b_ids].each do |id|
-    @store.brands.destroy(Brand.find(id.to_i))
-  end
+  @store.remove_many_brands(params[:b_ids])
   erb(:one_store)
 end
 

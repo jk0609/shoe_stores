@@ -35,9 +35,15 @@ describe(Store)do
     expect(store2.save()).to(eq(false))
   end
 
+  it("validates if the store's name doesn't have banned words") do
+    store1 = Store.create({:name => "Curmudgeon"})
+    expect(store1.save()).to(eq(false))
+  end
+
   it("converts first letter to uppercase and the rest to lowercase") do
     store1 = Store.create({:name => "tHe bEST StORe"})
     expect(store1.name).to(eq("The Best Store"))
   end
+
 
 end
