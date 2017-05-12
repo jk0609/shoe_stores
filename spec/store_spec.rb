@@ -30,4 +30,5 @@ describe(Store)do
     store1 = Store.create({:name => "tHe bEST StORe"})
     expect(store1.name).to(eq("The Best Store"))
   end
+
 end

@@ -7,7 +7,10 @@ class Brand < ActiveRecord::Base
     length: { maximum: 100, too_long: "Your brand name must be under #{count} characters." },
     uniqueness: {case_sensitive: false}
   }
-  before_save(:format_name)
+  validates :price, {
+    presence: { message: "Your brand must have a price." },
+  }
+  before_save(:format_name, :price_format)
 
 private
   def format_name
@@ -19,6 +22,6 @@ private
   end
 
   def price_format
-    self.price = ('%.02f' % self.price).to_f
+    self.price = ('%.02f' % self.price).to_s
   end
 end

@@ -18,6 +18,11 @@ describe(Brand)do
     expect(brand1.save()).to(eq(false))
   end
 
+  it("validates presence of brand price") do
+    brand1 = Brand.new({:name => "brand1", :price=>''})
+    expect(brand1.save()).to(eq(false))
+  end
+
   it("validates that length of brand name is <100 characters") do
     brand1 = Brand.new({:name => "x".*(101)})
     expect(brand1.save()).to(eq(false))
@@ -35,7 +40,8 @@ describe(Brand)do
   end
 
   it("converts all price values to dollar format") do
-    brand1 = Brand.create({:name => "tHe bEST BrAnD", :price=>12.2})
-    expect(brand1.price).to(eq(12.20))
+    brand1 = Brand.new({:name => "tHe bEST BrAnD", :price=>12.2})
+    brand1.save
+    expect(brand1.price).to(eq('12.20'))
   end
 end
