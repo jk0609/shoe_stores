@@ -9,8 +9,13 @@ describe(Store)do
       expect(store1.brands).to(eq([brand1, brand2]))
     end
 
-    it("validates presence of description") do
+    it("validates presence of store name") do
       store1 = Store.new({:name => ""})
+      expect(store1.save()).to(eq(false))
+    end
+
+    it("validates that length of store name is <100 characters") do
+      store1 = Store.new({:name => "x".*(101)})
       expect(store1.save()).to(eq(false))
     end
 

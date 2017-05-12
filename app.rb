@@ -9,8 +9,8 @@ get('/') do
   erb(:index)
 end
 post('/') do
-  new_store = Store.new({:name=>params[:s_name]})
-  if new_store.save
+  @new_store = Store.new({:name=>params[:s_name]})
+  if @new_store.save
     @stores = Store.all
     erb(:index)
   else
@@ -20,7 +20,20 @@ post('/') do
 end
 
 #all brands
-
+get('/brands') do
+  @brands = Brand.all
+  erb(:all_brands)
+end
+post('/') do
+  new_brand = Brand.new({:name=>params[:b_name], :price=>params[:b_price].to_f})
+  if new_brand.save
+    @brands = Brand.all
+    erb(:all_brands)
+  else
+    @brands = Brand.all
+    erb(:all_brands_error)
+  end
+end
 
 #clean database
 get('/kill') do

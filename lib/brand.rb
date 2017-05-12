@@ -1,6 +1,9 @@
 class Brand < ActiveRecord::Base
   has_many :shoes
   has_many :stores, through: :shoes
-  has_many :labels
-  has_many :tags, through: :labels
+
+  validates :name, presence: { message: "Your brand must have a name." }
+  #uniqueness
+  #price must be  float
+  #<100 chars
 end
