@@ -1,0 +1,17 @@
+body{
+  font-family: 'Baloo', cursive;
+  padding-bottom: 50px;
+  background: lightgreen;
+}
+.jumbotron h1{
+  text-align: center;
+}
+form button {
+  color: red;
+}
+.col-md-6{
+  padding-left: 80px;
+}
+.col-md-4{
+  padding-top: 60px;
+}

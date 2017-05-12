@@ -2,19 +2,24 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Shoe Store</title>
   </head>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">All Stores</a></li>
+        <li><a href="/">All Stores</a></li>
         <li><a href="/brands">All Brands</a></li>
-        <li><a href="/kill">Wipe Database</a></li>        
+        <!-- <li><a href="/kill">Wipe Database</a></li> -->
       </ul>
     </div>
   </nav>
   <body>
-    <div class='container'>
+    <div class="jumbotron">
+      <h1>Random Shoe Company Name Inc.</h1>
+    </div>
+    <div class='container-fluid'>
       <%= yield %>
     </div>
   </body>

@@ -54,10 +54,10 @@ post('/brands') do
 end
 
 #clean database
-get('/kill') do
-  Brand.destroy_all
-  Shoe.destroy_all
-  Store.destroy_all
-  @stores = Store.all
-  erb(:index)
-end
+# get('/kill') do
+#   Brand.destroy_all
+#   Shoe.destroy_all
+#   Store.destroy_all
+#   @stores = Store.all
+#   erb(:index)
+# end

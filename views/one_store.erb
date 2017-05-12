@@ -1,41 +1,50 @@
-<h1><%=@store.name%></h1>
 
-<h3>Brands At This Store</h3>
-<form class="" action="/stores/<%=@store.id%>" method="post">
-  <input type="hidden" name="_method" value="patch">
-<%@store.brands.each do |brand|%>
-  <div class="form-group">
-    <input type="checkbox" name="b_ids[]" value="<%=brand.id%>"> <a href="/brands/<%=brand.id%>"><%=brand.name%></a> - $<%=brand.price%>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <h1><%=@store.name%></h1>
+    <h3>Brands At This Store</h3>
+    <form class="" action="/stores/<%=@store.id%>" method="post">
+      <input type="hidden" name="_method" value="patch">
+    <%@store.brands.each do |brand|%>
+      <div class="form-group">
+        <input type="checkbox" name="b_ids[]" value="<%=brand.id%>"> <a href="/brands/<%=brand.id%>"><%=brand.name%></a> - $<%=brand.price%>
+      </div>
+    <%end%>
+    <button type="submit" name="button" class='btn btn-success'>Remove Brand</button>
+    </form>
+
+    <h3>Available Brands</h3>
+    <form class="" action="/stores/<%=@store.id%>" method="post">
+    <%@store.unassigned.each do |brand|%>
+      <div class="form-group">
+        <input type="checkbox" id='<%=brand.name%>' name="b_ids[]" value="<%=brand.id%>"> <%=brand.name%> - $<%=brand.price%>
+      </div>
+    <%end%>
+    <button type="submit" name="button" class='btn btn-success'>Add Brand</button>
+    </form>
   </div>
-<%end%>
-<button type="submit" name="button">Remove Brand</button>
-</form>
+  <div class="col-md-4">
+    <h3>Change Store Name</h3>
+    <%if @errors!=nil%>
+    <h5><%=@errors[:name][0]%></h5>
+    <%end%>
+    <form action="/stores/<%=@store.id%>" method="post">
+      <div class="form-group">
+        <label for="s_name">Change Name</label>
+        <input type="text" name="s_name" value="<%=@store.name%>">
+      </div>
+      <button type="submit" name="button" class='btn btn-info'>Update Name</button>
+    </form>
 
-<h3>Available Brands</h3>
-<form class="" action="/stores/<%=@store.id%>" method="post">
-<%@store.unassigned.each do |brand|%>
-  <div class="form-group">
-    <input type="checkbox" id='<%=brand.name%>' name="b_ids[]" value="<%=brand.id%>"> <%=brand.name%> - $<%=brand.price%>
+    <h3>Delete This Store</h3>
+    <form action="/" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden" name="s_id" value="<%=@store.id%>">
+      <button type="submit" name="button" class='btn btn-danger'>Delete This Store</button>
+    </form>
   </div>
-<%end%>
-<button type="submit" name="button">Add Brand</button>
-</form>
-
-<h3>Change Store Name</h3>
-<%if @errors!=nil%>
-<h5><%=@errors[:name][0]%></h5>
-<%end%>
-<form action="/stores/<%=@store.id%>" method="post">
-  <div class="form-group">
-    <label for="s_name">Change Name</label>
-    <input type="text" name="s_name" value="<%=@store.name%>">
+  <div class="col-md-2">
   </div>
-  <button type="submit" name="button">Update Name</button>
-</form>
-
-<h3>Delete This Store</h3>
-<form action="/" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="hidden" name="s_id" value="<%=@store.id%>">
-  <button type="submit" name="button">Delete This Store</button>
-</form>
+</div>
